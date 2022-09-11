@@ -1,0 +1,61 @@
+.info-container {
+  position: relative;
+  display: flex;
+}
+
+.info-container img {
+  width: 80px;
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 85px;
+}
+
+.info-container p {
+  text-align: center;
+  font-size: 15px;
+}
+
+.info-container a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+span.info-id {
+  margin-top: 80px;
+  text-align: center;
+}
+
+p.info-name {
+    margin-top: 12px;
+}
+
+.info-types{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  column-gap: 15px;
+}
+
+.info-types p{
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 6px 12px;
+}
+
+.info-bottom {
+  align-self: end;
+  margin: 0 auto;
+}
+
+.info-condition {
+  display: flex;
+  justify-content: space-around;
+}

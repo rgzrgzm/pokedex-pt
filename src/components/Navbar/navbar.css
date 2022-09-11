@@ -1,0 +1,15 @@
+.navbar-container {
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 16px;
+}
+
+.navbar-container a {
+  font-size: 18px;
+  font-weight: 800;
+  color: black;
+  text-decoration: none;
+  padding-bottom: 22px;
+  border-bottom: 5px solid red;
+  border-radius: 1px;
+}
