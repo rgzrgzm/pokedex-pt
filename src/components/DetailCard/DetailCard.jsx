@@ -1,48 +1,32 @@
 import React from "react";
+import {
+  capitalizeFirstLetter,
+  styleStats,
+  styleTypes,
+  transformNameStat,
+} from "../../helpers/utils";
 
 const DetailCard = ({ pokemonDetails }) => {
-  const transformNameStat = (name) => {
-    if (name === "hp") {
-      return "HP";
-    }
-
-    if (name === "attack") {
-      return "ATK";
-    }
-
-    if (name === "defense") {
-      return "DEF";
-    }
-
-    if (name === "special-attack") {
-      return "SA";
-    }
-
-    if (name === "special-defense") {
-      return "SD";
-    }
-
-    if (name === "speed") {
-      return "SPD";
-    }
-
-    return name;
-  };
   return (
-    <div>
+    <div className="detailCard-container">
       <h1>Pokemon Detail</h1>
 
       <div className="detail-infoPrincipal">
         <div className="detail-id">
           <div>
-            <span>{pokemonDetails.id && pokemonDetails.id}</span>
-            <p>{pokemonDetails.name && pokemonDetails.name}</p>
+            <span>N°{pokemonDetails.id && pokemonDetails.id}</span>
+            <p className="detail-name">
+              {pokemonDetails.name &&
+                capitalizeFirstLetter(pokemonDetails.name)}
+            </p>
           </div>
 
           <div className="detail-types">
             {pokemonDetails.types &&
               pokemonDetails.types.map((types, index) => (
-                <p key={index}>{types.type.name}</p>
+                <p key={index} className={styleTypes(types.type.name)}>
+                  {capitalizeFirstLetter(types.type.name)}
+                </p>
               ))}
           </div>
         </div>
@@ -60,20 +44,24 @@ const DetailCard = ({ pokemonDetails }) => {
         <div className="detail-infoAbilities">
           {pokemonDetails.abilities &&
             pokemonDetails.abilities.map((abilities, index) => (
-              <span key={index}>{abilities.ability.name}</span>
+              <span key={index}>
+                {capitalizeFirstLetter(abilities.ability.name)}
+              </span>
             ))}
         </div>
       </div>
+
+      <h2 className="condition-title">CONDITION</h2>
 
       <div className="detail-condition">
         <div className="detail-infoCondition">
           <div className="detail-conditionText">
             <p>HEIGHT</p>
-            <span>10m</span>
+            <span>{pokemonDetails.height}m</span>
           </div>
           <div className="detail-conditionText">
             <p>WEIGHT</p>
-            <span>10k</span>
+            <span>{pokemonDetails.weight}kg</span>
           </div>
         </div>
         <div className="detail-infoExp">
@@ -90,7 +78,9 @@ const DetailCard = ({ pokemonDetails }) => {
           {pokemonDetails.stats &&
             pokemonDetails.stats.map((stats, index) => (
               <div className="detail-stat" key={index}>
-                <span>{transformNameStat(stats.stat.name)}</span>
+                <span className={styleStats(stats.stat.name)}>
+                  {transformNameStat(stats.stat.name)}
+                </span>
                 <p>{stats.base_stat}</p>
               </div>
             ))}

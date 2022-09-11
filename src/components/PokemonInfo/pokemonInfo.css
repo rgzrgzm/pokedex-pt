@@ -16,38 +16,51 @@
 
 .info-container p {
   text-align: center;
-  font-size: 15px;
+  font-size: 13.5px;
 }
 
 .info-container a {
   display: block;
   text-align: center;
   text-decoration: none;
-  font-weight: bold;
-  margin-top: 10px;
+  font-weight: 800;
   margin-bottom: 20px;
+  margin-top: 27px;
+  font-size: 11.5px;
+  color: #8e8e8e;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 span.info-id {
   margin-top: 80px;
   text-align: center;
+  font-size: 13px;
+  margin-top: 80px;
+  text-align: center;
+  font-weight: 700;
+  color: #8e8e8e;
 }
 
 p.info-name {
-    margin-top: 12px;
+  margin-top: 12px;
+  color: hsl(223deg 26% 28%);
+  font-size: 18px;
+  font-weight: 800;
 }
 
-.info-types{
+.info-types {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   column-gap: 15px;
 }
 
-.info-types p{
-  border: 1px solid red;
+.info-types p {
+  color: #fff;
   border-radius: 5px;
-  padding: 6px 12px;
+  padding: 8px 15px;
+  font-weight: 700;
 }
 
 .info-bottom {
@@ -59,3 +72,38 @@ p.info-name {
   display: flex;
   justify-content: space-around;
 }
+
+.detail-types p{
+  font-size: 18px;
+  padding: 8px 14px; 
+  border-radius: 5px;
+}
+
+.type-grass {
+  background-color: hsl(122deg 100% 68%);
+}
+
+.type-poison {
+  background-color: hsl(273deg 74% 58%);
+}
+
+.type-fire {
+  background-color: #ffa124;
+}
+
+.type-flying {
+  background-color: #3aacff;
+}
+
+.type-water {
+  background-color: #0c5bff;
+}
+
+.type-bug {
+  background-color: #7f7f7f;
+}
+
+.type-normal {
+  background-color: #f577ae;
+}
+

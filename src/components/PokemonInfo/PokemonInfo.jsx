@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { capitalizeFirstLetter, styleTypes } from "../../helpers/utils";
 import "./pokemonInfo.css";
 
 const PokemonInfo = ({ pokemon }) => {
@@ -10,12 +11,14 @@ const PokemonInfo = ({ pokemon }) => {
       <div className="info-bottom">
         <span className="info-id">N°{pokemon.id}</span>
 
-        <p className="info-name">{pokemon.name}</p>
+        <p className="info-name">{capitalizeFirstLetter(pokemon.name)}</p>
 
         <div className="info-types">
           {pokemon.types &&
             pokemon.types.map((types, index) => (
-              <p key={index}>{types.type.name}</p>
+              <p className={styleTypes(types.type.name)} key={index}>
+                {capitalizeFirstLetter(types.type.name)}
+              </p>
             ))}
         </div>
 
