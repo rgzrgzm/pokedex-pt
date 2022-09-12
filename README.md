@@ -22,4 +22,4 @@ Una pequeña aplicación de Pokedex para mostrar una lista de pokemones disponib
 ![image](https://user-images.githubusercontent.com/87833482/189769186-09afb612-323d-42ca-b83e-39a9724f0f60.png)
 
 ## Link al video de muestra 👇🎥
-https://vimeo.com/manage/videos/748965592/47c93c43c3
+https://vimeo.com/748965592/47c93c43c3
