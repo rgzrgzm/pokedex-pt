@@ -8,10 +8,11 @@
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .pagination-container span {
-  background-color: #373737;
+  background-color: #353f5a;
   color: #fff;
   padding: 4px 10px;
   border-radius: 5px;
@@ -24,10 +25,30 @@
 
 button.pagination-reset {
   background-color: #ffffff;
-  color: #b7b7b7;
+  color: #323232;
   padding: 5px 12px;
   font-size: 13px;
   font-weight: 800;
   border-radius: 5px;
-  box-shadow: 0px 5px 10px -2px rgb(0 0 0 / 10%);
+  box-shadow: 0px 1px 5px 5px rgb(0 0 0 / 8%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.pagination-reset:hover {
+  background-color: #307cff;
+  color: #fff;
+  transform: scale(1.09);
+}
+
+button.pagination-reset-disabled {
+  background-color: #c3c3c3;
+  color: #838383;
+  cursor: auto;
+}
+
+button.pagination-reset-disabled:hover {
+  transform: scale(1);
+  background-color: #c3c3c3;
+  color: #838383;
 }

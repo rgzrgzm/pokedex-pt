@@ -6,7 +6,10 @@ import "./pokemonInfo.css";
 const PokemonInfo = ({ pokemon }) => {
   return (
     <div className="info-container">
-      <img src={pokemon.sprites.other.dream_world.front_default} alt="" />
+      <img
+        src={pokemon.sprites && pokemon.sprites}
+        alt=""
+      />
 
       <div className="info-bottom">
         <span className="info-id">N°{pokemon.id}</span>

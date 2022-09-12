@@ -8,33 +8,29 @@ import {
 export function getAllPokemons(limit = 25, offset = 0) {
   return async function (dispatch) {
     try {
-      if (localStorage.getItem("array")) {
-        console.log("Data was found in localStorage");
+      const data = await getPokemons(limit, offset);
 
-        const str = localStorage.getItem("array");
-        const parsedArr = JSON.parse(str);
-        return dispatch({
-          type: "GET_POKEMONS",
-          payload: parsedArr,
-        });
-      } else {
-        console.log("Data was not found in localStorage");
+      const promises = data.results.map(async (pokemon) => {
+        return await getPokemonDetail(pokemon.url);
+      });
 
-        const data = await getPokemons(limit, offset);
-        const promises = data.results.map(async (pokemon) => {
-          return await getPokemonDetail(pokemon.url);
-        });
+      const results = await Promise.all(promises);
 
-        const results = await Promise.all(promises);
-        // save in localStorage
-        // const jsonArr = JSON.stringify(results);
-        // localStorage.setItem("array", jsonArr);
+      const pokemonInfo = results.map((p) => {
+        return {
+          id: p.id,
+          name: p.name,
+          height: p.height,
+          weight: p.weight,
+          sprites: p.sprites.other.dream_world.front_default,
+          types: p.types,
+        };
+      });
 
-        return dispatch({
-          type: "GET_POKEMONS",
-          payload: results,
-        });
-      }
+      return dispatch({
+        type: "GET_POKEMONS",
+        payload: pokemonInfo,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +41,8 @@ export function getPokemonDetails(name) {
   return async function (dispatch) {
     try {
       if (localStorage.getItem(`pokeDetail${name}`)) {
-        console.log("Detail was  found in localStorage");
+        // console.log("Detail was  found in localStorage");
+
         //Get detail pokemon from localStorage
         const strDetail = localStorage.getItem(`pokeDetail${name}`);
         const parsedDetail = JSON.parse(strDetail);
@@ -55,14 +52,28 @@ export function getPokemonDetails(name) {
           payload: parsedDetail,
         });
       } else {
-        console.log("Detail was not found in localStorage");
+        // console.log("Detail was not found in localStorage");
         const pokemonDetail = await getPokemonByName(name);
-        const jsonDetail = JSON.stringify(pokemonDetail);
-        localStorage.setItem(`pokeDetail${pokemonDetail.name}`, jsonDetail);
+
+        const pokemonInfo = {
+          id: pokemonDetail.id,
+          name: pokemonDetail.name,
+          abilities: pokemonDetail.abilities,
+          types: pokemonDetail.types,
+          height: pokemonDetail.height,
+          weight: pokemonDetail.weight,
+          sprites: pokemonDetail.sprites.other.dream_world.front_default,
+          stats: pokemonDetail.stats,
+          base_experience: pokemonDetail.base_experience,
+        };
+
+        //Save details in localStorage
+        const jsonDetail = JSON.stringify(pokemonInfo);
+        localStorage.setItem(`pokeDetail${pokemonInfo.name}`, jsonDetail);
 
         return dispatch({
           type: "GET_POKEMON_DETAILS",
-          payload: pokemonDetail,
+          payload: pokemonInfo,
         });
       }
     } catch (error) {
@@ -88,5 +99,11 @@ export function getTotalCount() {
 export function cleanStateDetail() {
   return {
     type: "CLEAN_DETAILS",
+  };
+}
+
+export function cleanStatePokemon() {
+  return {
+    type: "CLEAN_STATE_POKEMON",
   };
 }

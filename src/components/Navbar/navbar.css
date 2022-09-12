@@ -5,13 +5,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 13px 10px -2px rgb(0 0 0 / 10%);
+  box-shadow: 0px 6px 10px -2px rgb(0 0 0 / 10%);
 }
 
 .navbar-container a {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
-  color: black;
+  color: #353f5a;
   text-decoration: none;
   border-radius: 1px;
 }

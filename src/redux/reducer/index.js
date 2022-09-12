@@ -13,7 +13,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "GET_POKEMON_DETAILS":
-      console.log(action.type);
       return {
         ...state,
         pokemonDetails: action.payload,
@@ -29,6 +28,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         totalCount: action.payload,
+      };
+
+    case "CLEAN_STATE_POKEMON":
+      return {
+        ...state,
+        pokemons: [],
       };
     default:
       return state;

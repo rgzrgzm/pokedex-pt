@@ -32,6 +32,7 @@
   cursor: pointer;
 }
 
+
 span.info-id {
   margin-top: 80px;
   text-align: center;
@@ -54,6 +55,7 @@ p.info-name {
   display: flex;
   justify-content: center;
   column-gap: 15px;
+  margin-bottom: 20px;
 }
 
 .info-types p {

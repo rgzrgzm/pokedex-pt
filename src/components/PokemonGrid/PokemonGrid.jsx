@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons, getTotalCount } from "../../redux/actions";
 import Pagination from "../Pagination/Pagination";
 import PokemonCard from "../PokemonCard/PokemonCard";
+import SpinnerLoading from "../SpinnerLoading/SpinnerLoading";
 import "./pokemonGrid.css";
 
 const PokemonGrid = () => {
@@ -11,7 +12,8 @@ const PokemonGrid = () => {
 
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
-  const [total, setTotal] = useState();
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getAllPokemons(25, 25 * page));
@@ -20,16 +22,25 @@ const PokemonGrid = () => {
 
   useEffect(() => {
     setTotal(Math.ceil(count / 25));
-  }, [count]);
+  }, [count, loading]);
 
   return (
     <div className="body-container">
       <div className="pagination-wrapper">
-        <Pagination page={page} setPage={setPage} total={total} />
+        <Pagination
+          page={page}
+          setPage={setPage}
+          total={total}
+          setLoading={setLoading}
+        />
       </div>
-      <div className="grid-container">
-        <PokemonCard pokemons={pokemons} />
-      </div>
+      {loading && pokemons.length === 0 ? (
+        <SpinnerLoading />
+      ) : (
+        <div className="grid-container">
+          <PokemonCard pokemons={pokemons} />
+        </div>
+      )}
     </div>
   );
 };
