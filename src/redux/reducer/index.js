@@ -1,6 +1,7 @@
 const initialState = {
   pokemons: [],
   pokemonDetails: [],
+  totalCount: 0,
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,6 +23,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemonDetails: [],
+      };
+
+    case "GET_TOTAL_COUNT":
+      return {
+        ...state,
+        totalCount: action.payload,
       };
     default:
       return state;

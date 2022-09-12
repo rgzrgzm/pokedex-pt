@@ -73,9 +73,9 @@ p.info-name {
   justify-content: space-around;
 }
 
-.detail-types p{
+.detail-types p {
   font-size: 18px;
-  padding: 8px 14px; 
+  padding: 8px 14px;
   border-radius: 5px;
 }
 
@@ -107,3 +107,30 @@ p.info-name {
   background-color: #f577ae;
 }
 
+.type-rock {
+  background-color: #a5a5a5;
+}
+
+.type-psychic {
+  background-color: #8f28ae;
+}
+
+.type-electric {
+  background-color: #b7ce06;
+}
+
+.type-steel {
+  background-color: #424740;
+}
+
+.type-ice {
+  background-color: #20dbde;
+}
+
+.type-ground {
+  background-color: #e1a715;
+}
+
+.type-default {
+  background-color: #5c2f98;
+}

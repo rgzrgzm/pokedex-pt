@@ -2,9 +2,10 @@ import {
   getPokemonDetail,
   getPokemons,
   getPokemonByName,
+  getApiTotalCount,
 } from "../../helpers/fetchDataPokemons";
 
-export function getAllPokemons() {
+export function getAllPokemons(limit = 25, offset = 0) {
   return async function (dispatch) {
     try {
       if (localStorage.getItem("array")) {
@@ -19,15 +20,15 @@ export function getAllPokemons() {
       } else {
         console.log("Data was not found in localStorage");
 
-        const data = await getPokemons();
+        const data = await getPokemons(limit, offset);
         const promises = data.results.map(async (pokemon) => {
           return await getPokemonDetail(pokemon.url);
         });
 
         const results = await Promise.all(promises);
         // save in localStorage
-        const jsonArr = JSON.stringify(results);
-        localStorage.setItem("array", jsonArr);
+        // const jsonArr = JSON.stringify(results);
+        // localStorage.setItem("array", jsonArr);
 
         return dispatch({
           type: "GET_POKEMONS",
@@ -70,6 +71,20 @@ export function getPokemonDetails(name) {
   };
 }
 
+export function getTotalCount() {
+  return async function (dispatch) {
+    try {
+      const totalCount = await getApiTotalCount();
+
+      return dispatch({
+        type: "GET_TOTAL_COUNT",
+        payload: totalCount,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 export function cleanStateDetail() {
   return {
     type: "CLEAN_DETAILS",

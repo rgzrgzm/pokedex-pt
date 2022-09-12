@@ -26,6 +26,32 @@ export const styleTypes = (type) => {
   if (type === "normal") {
     return "type-normal";
   }
+
+  if (type === "rock") {
+    return "type-rock";
+  }
+
+  if (type === "psychic") {
+    return "type-psychic";
+  }
+
+  if (type === "electric") {
+    return "type-electric";
+  }
+
+  if (type === "steel") {
+    return "type-steel";
+  }
+
+  if (type === "ice") {
+    return "type-ice";
+  }
+
+  if (type === "ground") {
+    return "type-ground";
+  }
+
+  return "type-default";
 };
 
 export const styleStats = (name) => {
