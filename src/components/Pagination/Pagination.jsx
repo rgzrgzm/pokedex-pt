@@ -2,6 +2,7 @@ import React from "react";
 import "./pagination.css";
 import left from "./left.svg";
 import right from "./right.svg";
+import reset from "./reset.svg";
 
 const Pagination = ({ page, setPage, total }) => {
   const lastPage = () => {
@@ -30,6 +31,14 @@ const Pagination = ({ page, setPage, total }) => {
 
       <button onClick={() => nextPage()} type="button">
         <img src={right} alt="" />
+      </button>
+
+      <button
+        type="button"
+        onClick={() => resetPage()}
+        className="pagination-reset"
+      >
+        RESET
       </button>
     </div>
   );

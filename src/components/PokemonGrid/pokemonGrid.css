@@ -1,7 +1,9 @@
 .body-container .pagination-wrapper {
   display: flex;
+  margin: 0 auto;
   justify-content: end;
   margin-top: 20px;
+  width: 95%;
 }
 
 .grid-container {
